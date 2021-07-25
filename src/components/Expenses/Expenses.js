@@ -1,15 +1,18 @@
+import React from "react";
+
 import ExpenseItem from "./ExpenseItem";
+import Card from "../UI/Card"; //this allows us to replace a div with a re-usable card component
 import "./Expenses.css";
 
-function Expenses(props) {
+const Expenses = (props) => {
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {props.expenses.map((item) => (
         <ExpenseItem title={item.title} amount={item.amount} date={item.date} />
       ))}
-    </div>
+    </Card>
   );
-}
+};
 
 // function Expenses(props) {
 //   return (
