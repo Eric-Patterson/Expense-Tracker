@@ -1,7 +1,7 @@
 // { useState } allows us to define values as state || allows us to update dom text such as a button adding +1 to html code and counts up
 // useState us a react hook. All hooks start with use and then something else
 // all hooks can only be called inside react component functions such as the one below ExpenseItem
-import React, { useState } from "react";
+import React from "react";
 
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
@@ -15,25 +15,18 @@ const ExpenseItem = (props) => {
   // [title, ] is a pointer towards (props.title)
   // [, setTitle] is a function we can call later on that will update the value
   // convention on naming is something that describes the value aka [title, ] and then add on before "set" then the describing word || [, setTitle]
-  const [title, setTitle] = useState(props.title);
-
-  // function clickHandler() {}
-  const clickHandler = () => {
-    setTitle("Updated!");
-    console.log(title);
-  };
+  // const [title, setTitle] = useState(props.title);
 
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
-      <div className="expense-item__description">
-        <h2> {title}</h2>
-        <div className="expense-item__price">${props.amount}</div>
-      </div>
-      {/* onClick adds event listener to the button - no need to use event listener js function */}
-      {/* if we did  "<button onClick={clickHandler() <------------ it would execute when JSX is being parsed, which is on window load*/}
-      <button onClick={clickHandler}>Change Title</button>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h2> {props.title}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div>
+      </Card>
+    </li>
   );
 };
 
